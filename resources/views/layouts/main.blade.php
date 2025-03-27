@@ -9,7 +9,8 @@
     <!-- Custom CSS -->
     <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logos/favicon.png') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" />
-    
+    <link rel="stylesheet" href="{{ asset('assets/css/datatables.min.css') }}" />
+
 </head>
 <body>
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
@@ -37,10 +38,13 @@
     <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/sidebarmenu.js') }}"></script>
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables/datatables.min.js') }}"></script>
     {{-- <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script> --}}
     <script src="{{ asset('assets/libs/simplebar/dist/simplebar.js') }}"></script>
     {{-- <script src="{{ asset('assets/js/dashboard.js') }}"></script> --}}
     <!-- solar icons -->
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+
+    @yield('scripts')
 </body>
 </html>

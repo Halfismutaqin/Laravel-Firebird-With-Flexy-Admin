@@ -12,15 +12,15 @@
         <div class="card-body">
             <div class="row">
                 <div class="overflow-auto">
-                    <table class="table table-bordered w-100">
+                    <table id="myTable" class="table table-bordered text-sm w-100">
                         <thead>
                             <tr>
-                                <th>USER ID</th>
-                                <th>MANAGE USER</th>
-                                <th>MANAGE ITEMS</th>
-                                <th>MANAGE ITEMS REPORT</th>
-                                <th>MANAGE ITEMS IMPORT</th>
-                                <th>MANAGE LOCATION</th>
+                                <th class="text-center align-middle">USER ID</th>
+                                <th class="text-center align-middle">MANAGE USER</th>
+                                <th class="text-center align-middle">MANAGE ITEMS</th>
+                                <th class="text-center align-middle">MANAGE ITEMS REPORT</th>
+                                <th class="text-center align-middle">MANAGE ITEMS IMPORT</th>
+                                <th class="text-center align-middle">MANAGE LOCATION</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,4 +40,17 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+<script>
+$(document).ready(function () {
+    $('#myTable').DataTable({
+        responsive: true, // Mengaktifkan tabel responsif
+        paging: true,     // Mengaktifkan paginasi
+        searching: true,  // Mengaktifkan fitur pencarian
+        ordering: false,   // Mengaktifkan fitur pengurutan
+    });
+});
+</script>
 @endsection

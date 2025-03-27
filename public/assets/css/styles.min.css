@@ -275,6 +275,43 @@ h6, .h6 {
   font-size: 0.9375rem;
 }
 
+/* Default ukuran font */
+.text-xs {
+  font-size: 0.6rem; /* 12px */
+}
+.text-sm {
+  font-size: 0.8rem; /* 14px */
+}
+.text-md {
+  font-size: 1rem; /* 16px */
+}
+.text-lg {
+  font-size: 1.25rem; /* 20px */
+}
+.text-xl {
+  font-size: 1.5rem; /* 24px */
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 576px) {
+  .text-xs {
+      font-size: 0.625rem; /* 10px */
+  }
+  .text-sm {
+      font-size: 0.75rem; /* 12px */
+  }
+  .text-md {
+      font-size: 0.875rem; /* 14px */
+  }
+  .text-lg {
+      font-size: 1rem; /* 16px */
+  }
+  .text-xl {
+      font-size: 1.25rem; /* 20px */
+  }
+}
+
+
 p {
   margin-top: 0;
   margin-bottom: 1rem;
