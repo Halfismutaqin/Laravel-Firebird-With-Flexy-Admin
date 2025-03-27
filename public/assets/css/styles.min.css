@@ -496,6 +496,8 @@ button,
 [type=reset],
 [type=submit] {
   -webkit-appearance: button;
+  -moz-appearance: button;    /* Firefox */
+  appearance: button;        /* Standard syntax */
 }
 button:not(:disabled),
 [type=button]:not(:disabled),
@@ -551,9 +553,19 @@ legend + * {
   height: auto;
 }
 
-[type=search] {
-  -webkit-appearance: textfield;
-  outline-offset: -2px;
+[type="search"] {
+  -webkit-appearance: textfield; /* Safari/Chrome */
+  -moz-appearance: textfield;    /* Firefox */
+  appearance: textfield;        /* Standard syntax */
+  outline-offset: -2px;         /* Adjust focus outline position */
+  
+  /* Optional: Reset search input specific styling */
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    -webkit-appearance: none; /* Remove default search decorations in WebKit */
+  }
 }
 
 /* rtl:raw:
@@ -573,8 +585,17 @@ legend + * {
 }
 
 ::file-selector-button {
-  font: inherit;
-  -webkit-appearance: button;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  
+  /* Your custom styles */
+  padding: 8px 16px;
+  background: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 output {
@@ -15815,9 +15836,9 @@ textarea.form-control-lg {
   /* top: 65px; */
 }
 @media (max-width: 991.98px) {
-  .app-header {
-    /* top: 131px; */
-  }
+  /* .app-header {
+    top: 131px;
+  } */
 }
 .app-header .container-fluid, .app-header .container-sm, .app-header .container-md, .app-header .container-lg, .app-header .container-xl, .app-header .container-xxl {
   max-width: 1300px;
@@ -15929,9 +15950,9 @@ body {
   /* top: 65px; */
 }
 @media (max-width: 991.98px) {
-  #main-wrapper[data-layout=vertical][data-sidebar-position=fixed] .left-sidebar {
-    /* top: 131px; */
-  }
+  /* #main-wrapper[data-layout=vertical][data-sidebar-position=fixed] .left-sidebar {
+    top: 131px;
+  } */
 }
 #main-wrapper[data-layout=vertical][data-header-position=fixed] .app-header {
   position: fixed;
