@@ -21,45 +21,51 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# Firebird for Laravel
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+[![Latest Stable Version](https://poser.pugx.org/danidoble/laravel-firebird/v/stable)](https://packagist.org/packages/danidoble/laravel-firebird)
+[![Total Downloads](https://poser.pugx.org/danidoble/laravel-firebird/downloads)](https://packagist.org/packages/danidoble/laravel-firebird)
+[![Tests](https://github.com/danidoble/laravel-firebird/actions/workflows/tests.yml/badge.svg)](https://github.com/danidoble/laravel-firebird/actions/workflows/tests.yml)
+[![License](https://poser.pugx.org/danidoble/laravel-firebird/license)](https://packagist.org/packages/danidoble/laravel-firebird)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+This package adds support for the Firebird PDO Database Driver in Laravel applications.
 
-## Laravel Sponsors
+## Version Support
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **PHP:** 8.1, 8.2, 8.3, 8.4
+- **Laravel:** 10.x, 11.x, 12.x
+- **Firebird:** 2.5, 3.0, 4.0, 5.0
 
-### Premium Partners
+## Installation
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+You can install the package via composer:
 
-## Contributing
+```bash
+composer require danidoble/laravel-firebird
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+_The package will automatically register itself._
 
-## Code of Conduct
+Declare the connection within your `config/database.php` file by using `firebird` as the
+driver:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```php
+'connections' => [
 
-## Security Vulnerabilities
+    'firebird' => [
+        'driver'   => 'firebird',
+        'host'     => env('DB_HOST', 'localhost'),
+        'port'     => env('DB_PORT', '3050'),
+        'database' => env('DB_DATABASE', '/path_to/database.fdb'),
+        'username' => env('DB_USERNAME', 'sysdba'),
+        'password' => env('DB_PASSWORD', 'masterkey'),
+        'charset'  => env('DB_CHARSET', 'UTF8'),
+        'role'     => null,
+    ],
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+],
+```
 
 ## License
 
