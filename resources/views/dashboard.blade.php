@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="row">
-        <h1 class="mb-4">Welcome to Nice Admin Dashboard</h1>
+        <h1 class="mb-4">Welcome to Flexy Admin Dashboard</h1>
     </div>
     <div class="row">
         <div class="col-md-4">
