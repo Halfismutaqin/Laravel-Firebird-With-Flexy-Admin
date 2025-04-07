@@ -15953,6 +15953,25 @@ body {
   overflow-x: hidden;
 }
 
+.page-wrapper .content-area{
+  padding-top: 60px;
+}
+@media (max-width: 1280.98px) {
+  .page-wrapper .content-area{
+    padding-top: 60px;
+  }
+}
+@media (max-width: 991.98px) {
+  .page-wrapper .content-area{
+    padding-top: 60px;
+  }
+}
+@media (max-width: 767.98px) {
+  .page-wrapper .content-area{
+    padding-top: 60px;
+  }
+}
+
 .body-wrapper {
   position: relative;
   border-radius: 20px;

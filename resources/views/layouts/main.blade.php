@@ -13,23 +13,27 @@
 
 </head>
 <body>
-    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-        data-sidebar-position="fixed" data-header-position="fixed">
-        <div class="body-wrapper">
-            <!-- Navbar -->
+    <div class="page-wrapper" id="main-wrapper"
+        data-layout="vertical" data-navbarbg="skin6"
+        data-sidebartype="full" data-sidebar-position="fixed"
+        data-header-position="fixed">
+
+        {{-- Sidebar (posisi fixed) --}}
+        @include('partials.sidebar')
+
+        <div class="body-wrapper with-sidebar d-flex flex-column min-vh-100">
+            {{-- Navbar --}}
             @include('partials.navbar')
 
-            <!-- Sidebar -->
-            @include('partials.sidebar')
-
-            <!-- Page Content -->
-            <div class="page-wrapper">
-                <div class="container-fluid">
+            {{-- Konten --}}
+            <div class="page-wrapper content-area">
+                <div class="container-fluid p-4">
                     @yield('content')
                 </div>
-                <!-- Footer -->
-                @include('partials.footer')
             </div>
+
+            {{-- Footer --}}
+            @include('partials.footer')
         </div>
     </div>
 

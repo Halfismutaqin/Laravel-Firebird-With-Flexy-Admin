@@ -39,6 +39,10 @@ class Login_Controller extends Controller
         $username = strtoupper(htmlspecialchars(trim($credentials['username']), ENT_QUOTES, 'UTF-8'));
         $password = strtoupper(htmlspecialchars(trim($credentials['password']), ENT_QUOTES, 'UTF-8'));
 
+        if (strlen($username) > 15) {
+            return back()->withErrors(['username' => 'The username field must not be greater than 15 characters.']);
+        }
+
         $user = CoreUser_Model::where('USER_ID', $username)->first();
 
         if ($user) {
