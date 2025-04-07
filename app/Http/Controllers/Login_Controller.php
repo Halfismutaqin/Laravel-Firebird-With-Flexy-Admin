@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Cache\RateLimiter;
+use Illuminate\Validation\ValidationException;
+
 
 class Login_Controller extends Controller
 {
@@ -17,6 +19,30 @@ class Login_Controller extends Controller
         return app(RateLimiter::class)->tooManyAttempts(
             $this->throttleKey($request), 5, 1 // 5 percobaan dalam 1 menit
         );
+    }
+
+    protected function throttleKey(Request $request)
+    {
+        return strtolower($request->input('username')) . '|' . $request->ip();
+    }
+
+    protected function incrementLoginAttempts(Request $request)
+    {
+        app(RateLimiter::class)->hit($this->throttleKey($request), 60); // Hit 60s
+    }
+
+    protected function clearLoginAttempts(Request $request)
+    {
+        app(RateLimiter::class)->clear($this->throttleKey($request));
+    }
+
+    protected function sendLockoutResponse(Request $request)
+    {
+        $seconds = app(RateLimiter::class)->availableIn($this->throttleKey($request));
+
+        throw ValidationException::withMessages([
+            'lockout_seconds' => [$seconds] // send to view blade for update countdown
+        ])->status(429);
     }
 
     public function index()
@@ -34,6 +60,10 @@ class Login_Controller extends Controller
             'username' => 'required|string|max:15',
             'password' => 'required|string'
         ]);
+
+        if ($this->hasTooManyLoginAttempts($request)) {
+            return $this->sendLockoutResponse($request);
+        }
 
         // Sanitasi dan normalisasi input
         $username = strtoupper(htmlspecialchars(trim($credentials['username']), ENT_QUOTES, 'UTF-8'));
@@ -68,6 +98,8 @@ class Login_Controller extends Controller
                 return redirect()->intended(route('dashboard'));
             }
         }
+        // Tambah 1 ke login attempt counter
+        $this->incrementLoginAttempts($request);
 
         Log::warning('Failed login attempt', ['username' => $username]);
         return back()->withErrors([
