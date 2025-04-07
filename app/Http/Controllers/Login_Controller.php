@@ -44,12 +44,17 @@ class Login_Controller extends Controller
         }
 
         $user = CoreUser_Model::where('USER_ID', $username)->first();
-
+        
         if ($user) {
+            // Check Web Access:
+            if (empty($user->MNG_WEB) or ($user->MNG_WEB !== 'Y')){
+                return back()->withErrors(['username' => 'Users do not have access']);
+            }
+
             // Verifikasi password Base64
             if (base64_encode($password) === $user->USER_PASSWORD) {
                 Auth::login($user, $request->has('remember'));
-                
+
                 // Regenerasi session dan simpan data user
                 $request->session()->regenerate();
                 Session::put('user_session', [
@@ -66,7 +71,7 @@ class Login_Controller extends Controller
 
         Log::warning('Failed login attempt', ['username' => $username]);
         return back()->withErrors([
-            'username' => 'Kredensial tidak valid',
+            'username' => 'Make sure the username or password matches',
         ])->onlyInput('username');
     }
 
