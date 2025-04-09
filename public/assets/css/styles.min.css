@@ -4738,6 +4738,79 @@ textarea.form-control-lg {
   --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
+.callout {
+  border-left: 5px solid;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  line-height: 1.6;
+}
+
+.callout::before {
+  font-size: 1.2rem;
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: inherit;
+}
+
+.callout-primary {
+  border-color: #007bff;
+  background-color: #e9f4ff;
+  color: #004085;
+}
+
+.callout-secondary {
+  border-color: #6c757d;
+  background-color: #f7f7f9;
+  color: #383d41;
+}
+
+.callout-success {
+  border-color: #28a745;
+  background-color: #eafbee;
+  color: #155724;
+}
+
+.callout-danger {
+  border-color: #dc3545;
+  background-color: #fdecea;
+  color: #721c24;
+}
+
+.callout-warning {
+  border-color: #ffc107;
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.callout-info {
+  border-color: #17a2b8;
+  background-color: #e2f5fb;
+  color: #0c5460;
+}
+
+.callout-light {
+  border-color: #f8f9fa;
+  background-color: #ffffff;
+  color: #818182;
+}
+
+.callout-dark {
+  border-color: #343a40;
+  background-color: #d6d8d9;
+  color: #1b1e21;
+}
+
+.callout p {
+  margin: 0;
+}
+
 .card {
   --bs-card-spacer-y: 30px;
   --bs-card-spacer-x: 30px;
