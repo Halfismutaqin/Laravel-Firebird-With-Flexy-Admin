@@ -18,12 +18,13 @@ class CoreUser_Model extends Authenticatable
         'USER_ID',
         'USER_PASSWORD',
         'USER_NAME',
-        'ACTIVE'
+        'ACTIVE',
+        'REMEMBER_TOKEN'
     ];
 
     protected $hidden = [
         'USER_PASSWORD',
-        'remember_token'
+        'REMEMBER_TOKEN'
     ];
 
     public function getAuthPassword()
@@ -34,6 +35,6 @@ class CoreUser_Model extends Authenticatable
     // Jika perlu menyesuaikan nama field untuk remember token
     public function getRememberTokenName()
     {
-        return 'remember_token';
+        return 'REMEMBER_TOKEN';
     }
 }
