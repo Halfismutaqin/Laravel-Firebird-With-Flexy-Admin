@@ -93,6 +93,7 @@
   --bs-body-bg-rgb: 255, 255, 255;
   --bs-emphasis-color: #000;
   --bs-emphasis-color-rgb: 0, 0, 0;
+  --bs-primary-color: rgba(72, 75, 223, 0.75);
   --bs-secondary-color: rgba(103, 117, 124, 0.75);
   --bs-secondary-color-rgb: 103, 117, 124;
   --bs-secondary-bg: #ecf0f2;
@@ -142,6 +143,7 @@
   --bs-body-bg-rgb: 34, 54, 64;
   --bs-emphasis-color: #fff;
   --bs-emphasis-color-rgb: 255, 255, 255;
+  --bs-primary-color: rgba(176, 250, 246, 0.932);
   --bs-secondary-color: rgba(241, 249, 255, 0.75);
   --bs-secondary-color-rgb: 241, 249, 255;
   --bs-secondary-bg: #11142d;
@@ -2172,16 +2174,16 @@ progress {
   --bs-table-bg-type: initial;
   --bs-table-color-state: initial;
   --bs-table-bg-state: initial;
-  --bs-table-color: #777e89;
+  --bs-table-color: #54575c;
   --bs-table-bg: var(--bs-body-bg);
   --bs-table-border-color: #ecf0f2;
   --bs-table-accent-bg: transparent;
-  --bs-table-striped-color: #777e89;
-  --bs-table-striped-bg: #ecf0f2;
-  --bs-table-active-color: #777e89;
+  --bs-table-striped-color: #54575c;
+  --bs-table-striped-bg: #eaf2f7;
+  --bs-table-active-color: #54575c;
   --bs-table-active-bg: rgba(var(--bs-emphasis-color-rgb), 0.1);
-  --bs-table-hover-color: #777e89;
-  --bs-table-hover-bg: #f6f8fb;
+  --bs-table-hover-color: #141414;
+  --bs-table-hover-bg: #c8f1fd;
   width: 100%;
   margin-bottom: 1rem;
   vertical-align: top;
@@ -2249,9 +2251,9 @@ progress {
 
 .table-primary {
   --bs-table-color: #000;
-  --bs-table-bg: rgb(210, 219.4, 240.6);
+  --bs-table-bg: rgb(223, 230, 247);
   --bs-table-border-color: rgb(168, 175.52, 192.48);
-  --bs-table-striped-bg: rgb(199.5, 208.43, 228.57);
+  --bs-table-striped-bg: rgb(219, 228, 250);
   --bs-table-striped-color: #000;
   --bs-table-active-bg: rgb(189, 197.46, 216.54);
   --bs-table-active-color: #fff;
@@ -5145,7 +5147,7 @@ textarea.form-control-lg {
   --bs-breadcrumb-border-radius: ;
   --bs-breadcrumb-divider-color: var(--bs-secondary-color);
   --bs-breadcrumb-item-padding-x: 0.5rem;
-  --bs-breadcrumb-item-active-color: var(--bs-secondary-color);
+  --bs-breadcrumb-item-active-color: var(--bs-primary-color);
   display: flex;
   flex-wrap: wrap;
   padding: var(--bs-breadcrumb-padding-y) var(--bs-breadcrumb-padding-x);
@@ -8223,6 +8225,56 @@ textarea.form-control-lg {
   min-width: 100vw !important;
 }
 
+.width-min-20 {
+  min-width: 20px;
+}
+.width-min-40 {
+  min-width: 40px;
+}
+.width-min-60 {
+  min-width: 60px;
+}
+.width-min-80 {
+  min-width: 80px;
+}
+.width-min-100 {
+  min-width: 100px;
+}
+.width-min-120 {
+  min-width: 120px;
+}
+.width-min-140 {
+  min-width: 140px;
+}
+.width-min-160 {
+  min-width: 160px;
+}
+.width-min-180 {
+  min-width: 180px;
+}
+.width-min-200 {
+  min-width: 200px;
+}
+.width-min-220 {
+  min-width: 220px;
+}
+.width-min-240 {
+  min-width: 240px;
+}
+.width-min-260 {
+  min-width: 260px;
+}
+.width-min-280 {
+  min-width: 280px;
+}
+.width-min-320 {
+  min-width: 320px;
+}
+.width-min-340 {
+  min-width: 340px;
+}
+
+
 .h-25 {
   height: 25% !important;
 }
@@ -8254,6 +8306,23 @@ textarea.form-control-lg {
 .min-vh-100 {
   min-height: 100vh !important;
 }
+
+.vh-75 {
+  height: 75vh !important;
+}
+
+.min-vh-75 {
+  min-height: 75vh !important;
+}
+
+.vh-50 {
+  height: 50vh !important;
+}
+
+.min-vh-50 {
+  min-height: 50vh !important;
+}
+
 
 .flex-fill {
   flex: 1 1 auto !important;
@@ -10056,6 +10125,30 @@ textarea.form-control-lg {
 .bg-danger {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-danger-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.bg-light-primary {
+  background-color: rgba(var(--bs-primary-rgb), 0.2) !important;
+}
+
+.bg-light-secondary {
+  background-color: rgba(var(--bs-secondary-rgb), 0.2) !important;
+}
+
+.bg-light-success {
+  background-color: rgba(var(--bs-success-rgb), 0.2) !important;
+}
+
+.bg-light-info {
+  background-color: rgba(var(--bs-info-rgb), 0.2) !important;
+}
+
+.bg-light-warning {
+  background-color: rgba(var(--bs-warning-rgb), 0.2) !important;
+}
+
+.bg-light-danger {
+  background-color: rgba(var(--bs-danger-rgb), 0.2) !important;
 }
 
 .bg-light {

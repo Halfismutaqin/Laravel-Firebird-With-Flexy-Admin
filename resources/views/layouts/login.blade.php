@@ -12,15 +12,14 @@
 
         {{-- Error Handling --}}
         @php
-        // Filter out all lockout-related errors (both the message and seconds)
         $filteredErrors = collect($errors->all())->reject(function ($error) {
             return str_contains($error, 'Terlalu banyak percobaan login') || 
-                str_contains($error, 'Too many login attempts')||
-                is_numeric($error); // This filters out the raw seconds value;
+                str_contains($error, 'Too many login attempts') || 
+                is_numeric($error);
         });
         @endphp
 
-        {{-- Display general errors (non-lockout) --}}
+        {{-- Display General Errors --}}
         @if ($filteredErrors->isNotEmpty())
         <div class="alert alert-danger text-sm py-1 text-center">
             @foreach ($filteredErrors as $error)
@@ -29,38 +28,15 @@
         </div>
         @endif
 
-        {{-- Handle lockout separately --}}
+        {{-- Handle Lockout --}}
         @if ($errors->has('lockout_seconds'))
         @php
             $seconds = session('errors')->get('lockout_seconds')[0] ?? 0;
         @endphp
-
+        <input type="number" name="getSecond" id="getSecond" value="{{ $seconds }}" hidden>
         <div class="alert alert-danger text-sm py-1 text-center" id="lockout-message">
             <span id="countdown-text"></span>
         </div>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                let seconds = {{ $seconds }};
-                const countdownText = document.getElementById('countdown-text');
-                const loginBtn = document.getElementById('login-btn');
-
-                function updateCountdown() {
-                    if (seconds <= 0) {
-                        countdownText.textContent = 'Please try logging in again.';
-                        if (loginBtn) loginBtn.disabled = false;
-                        return;
-                    }
-
-                    countdownText.textContent = `Too many login attempts. Please try again in ${seconds} seconds.`;
-                    seconds--;
-                    setTimeout(updateCountdown, 1000);
-                }
-
-                if (loginBtn) loginBtn.disabled = true;
-                updateCountdown();
-            });
-        </script>
         @endif
 
         <form method="POST" action="{{ route('login.authenticate') }}">
@@ -91,30 +67,32 @@
 </div>
 
 {{-- Timer Script --}}
-@if ($errors->has('lockout'))
+@if ($errors->has('lockout_seconds'))
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        let seconds = {{ $errors->first('lockout_seconds') ?? 0 }};
+        // let seconds = @json($seconds);
+        let seconds = parseInt(document.getElementById('getSecond').value);
         const countdownText = document.getElementById('countdown-text');
         const loginBtn = document.getElementById('login-btn');
 
-        // Disable login button
-        if (loginBtn) loginBtn.disabled = true;
+        if (countdownText && loginBtn) {
+            loginBtn.disabled = true;
 
-        function updateCountdown() {
-            if (seconds <= 0) {
-                countdownText.textContent = 'Silakan coba login kembali.';
-                if (loginBtn) loginBtn.disabled = false;
-                return;
+            function updateCountdown() {
+                if (seconds <= 0) {
+                    countdownText.textContent = 'Please try logging in again.';
+                    loginBtn.disabled = false;
+                } else {
+                    countdownText.textContent = `Too many login attempts. Please try again in ${seconds} seconds.`;
+                    seconds--;
+                    setTimeout(updateCountdown, 1000);
+                }
             }
 
-            countdownText.textContent = `Terlalu banyak percobaan login. Silakan coba lagi dalam ${seconds} detik.`;
-            seconds--;
-
-            setTimeout(updateCountdown, 1000);
+            updateCountdown();
+        } else {
+            console.error("Countdown or Login button element not found!");
         }
-
-        updateCountdown();
     });
 </script>
 @endif

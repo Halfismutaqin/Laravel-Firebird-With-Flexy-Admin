@@ -17,7 +17,7 @@ class Login_Controller extends Controller
     protected function hasTooManyLoginAttempts(Request $request)
     {
         return app(RateLimiter::class)->tooManyAttempts(
-            $this->throttleKey($request), 5, 1 // 5 percobaan dalam 1 menit
+            $this->throttleKey($request), 5 // 5 percobaan dalam 1 menit
         );
     }
 

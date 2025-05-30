@@ -18,8 +18,11 @@ class CoreUser_Model extends Authenticatable
         'USER_ID',
         'USER_PASSWORD',
         'USER_NAME',
-        'ACTIVE',
-        'REMEMBER_TOKEN'
+        'USER_STATUS',
+        'REMEMBER_TOKEN',
+        'ROLE_ID',
+        'CREATED_BY',
+        'CREATED_DT'
     ];
 
     protected $hidden = [
@@ -36,5 +39,11 @@ class CoreUser_Model extends Authenticatable
     public function getRememberTokenName()
     {
         return 'REMEMBER_TOKEN';
+    }
+
+    // Define a relationship with CONFIG_ROLE.
+    public function getUserRole()
+    {
+        return $this->belongsTo(CoreRole_Model::class, 'ROLE_ID', 'ROLE_ID');
     }
 }

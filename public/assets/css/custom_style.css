@@ -1,0 +1,36 @@
+.primary-gradient {
+    background: linear-gradient(45deg, #1d6fc1, #159b94, #278f56); /* Gradien biru tosca ke hijau tosca dengan kemiringan 45 derajat */
+    color: transparent; /* Teks diisi dengan gradien */
+    -webkit-background-clip: text; /* Gradien hanya pada teks atau ikon */
+    -webkit-text-fill-color: transparent; /* Mengisi warna teks dengan gradien */
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 16px; /* Ukuran default */
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.primary-gradient.btn {
+    background: linear-gradient(45deg, #1d6fc1, #159b94, #278f56); /* Gradien biru tosca ke hijau tosca dengan kemiringan 45 derajat */
+    -webkit-background-clip: border-box; /* Tidak memotong konten */
+    -webkit-text-fill-color: #fff; /* Warna teks putih */
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Shadow untuk tombol */
+}
+
+.primary-gradient.icon {
+    font-size: 48px; /* Ukuran ikon */
+}
+
+.primary-gradient.btn:hover {
+    background: linear-gradient(to right, #3cb371, #20b2aa, #1e90ff); /* Balik gradien saat hover */
+    transform: scale(1.05); /* Animasi saat hover */
+}
+
+.primary-gradient.btn:hover {
+    color: #fff; /* Tetap putih saat hover pada tombol */
+}
